@@ -1,0 +1,1088 @@
+/* ============================================ */
+/* = Front End Styling for Project Status Pro = */
+/* ============================================ */
+body.psp-standalone-page {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial','Helvetica', San-serif;
+    font-size: 14px;
+    line-height: 1.65em;
+    background: #F1F2F7;
+}
+.wrapper {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+#psp-title {
+    background: #2A3542;
+    color: #aaa;
+    padding: 5px 15px;
+    height: 65px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.psp-single-project .fixed,
+.psp-shortcode .fixed { position: fixed }
+#psp-title .wrapper { position: relative }
+#psp-title h1 {
+    font-size: 24px !important;
+    line-height: 54px !important;
+    color: #fff;
+    font-weight: normal;
+    float: left;
+    margin: 0 !important;
+}
+#psp-title span {
+    color: #AEB2B7;
+    font-size: 18px;
+    font-weight: normal;
+}
+.psp-standalone-page a:hover,
+.psp-shortcode a:hover { text-decoration: none }
+.psp-standalone-page h2 {
+    font-weight: normal;
+    margin-bottom: 18px;
+    font-size: 24px;
+    line-height: 1.5em;
+}
+.psp-single-project a,
+.psp-shortcode a,
+.psp-standalone-page a { color: #2a3542 }
+.psp-single-project a:hover,
+.psp-shortcode a:hover,
+.psp-standalone-page a:hover { color: #333 }
+.post-password-form p { margin: 0 0 20px 0 }
+#psp-main-nav {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
+#psp-main-nav ul {
+    list-style: none;
+    background: #2a3542;
+    margin: 0;
+    padding: 0;
+}
+#psp-main-nav ul li {
+    margin: 0;
+    padding: 0;
+}
+#psp-main-nav ul li a {
+    color: #fff;
+    display: block;
+    text-decoration: none;
+}
+#psp-main-nav ul li li a {
+    padding: 0 50px;
+    line-height: 55px;
+    height: 55px;
+}
+#psp-main-nav li#nav-menu { position: relative }
+#psp-main-nav li#nav-menu > a {
+    background: url('../images/menu.png') center center no-repeat;
+    width: 75px;
+    height: 55px;
+    padding: 0 !important;
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#psp-main-nav li#nav-menu:hover,
+#psp-main-nav li#nav-menu.active { background-color: #334050 }
+#psp-main-nav li#nav-menu:hover ul {
+    right: 0px;
+    left: auto;
+}
+li#nav-over a { background: url('../images/overview.png') 8px center no-repeat }
+li#nav-complete a { background: url('../images/progress.png') 8px center no-repeat }
+li#nav-milestones a { background: url('../images/milestones.png') 8px center no-repeat }
+li#nav-talk a { background: url('../images/discussion.png') 8px center no-repeat }
+li#nav-logout a { background: url('../images/logout.png') 8px center no-repeat }
+#psp-main-nav ul ul {
+    width: 300px;
+    position: absolute;
+    left: -99999px;
+    background: #334050;
+}
+#psp-main-nav ul li li {
+    border-bottom: 1px solid #384658;
+    width: auto !important;
+}
+#psp-main-nav ul li li a:hover { background-color: #384658 }
+
+/* Branding */
+
+#psp-branding { padding: 30px 0; text-align: center; border-bottom: 1px solid #ccc; }
+.psp-branding-wrapper { margin: 0 auto; margin: 0 auto; max-width: 350px; }
+#psp-branding img { display: inline-block; max-width: 100%; height: auto; margin: 0 auto; }
+
+/* Essentials */
+
+.psp-standalone-page #overview { padding-top: 105px }
+#psp-essentials {
+    display: table;
+    width: 100%;
+    padding: 0;
+    margin: 60px 0;
+}
+#psp-essentials.psp-shortcode { margin: 30px 0 }
+#psp-essentials #psp-description {
+    width: 63%;
+    padding: 15px 1.5%;
+    border-radius: 6px;
+    min-height: 200px;
+}
+#psp-essentials.psp-shortcode #psp-description {
+    width: 100%;
+    padding: 15px;
+    min-height: auto;
+}
+#psp-essentials div h4,
+.psp-phase-info h5 {
+    margin-top: 0px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: #999;
+}
+#psp-essentials div:first-child { float: left }
+#psp-essentials #project-documents {
+    padding-top: 13px;
+    float: right;
+    width: 30%;
+}
+#psp-essentials.psp-shortcode #project-documents {
+    clear: both;
+    float: none;
+    width: 100%;
+    padding-top: 25px;
+}
+#psp-documents, #psp-documents li { list-style: none !important; }
+#project-documents {
+    background: transparent;
+    color: #584b17;
+}
+#project-documents ul {
+    list-style: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+#project-documents ul li a { color: #000 }
+#project-documents ul li span.doc-status {
+    background: #fff;
+    padding: 2px 5px;
+    border-radius: 2px;
+    font-size: 11px;
+}
+#project-documents ul li span.description { display: block }
+#psp-essentials span.status-Approved {
+    background: #99C262 !important;
+    color: #fff !important;
+}
+#psp-essentials span.status-In { background: #F8D347 !important }
+#psp-essentials span.status-Rejected { background: #FF6C60 !important }
+#psp-essentials span.status-Revisions { background: #ffe377 !important }
+#psp-description {
+    background: #fff;
+    position: relative;
+}
+#psp-essentials .timing {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#psp-essentials .timing li {
+    float: left;
+    width: 75px;
+    margin: 0 15px 0 0;
+    padding: 0;
+    text-align: center;
+    color: #666;
+	list-style: none; 
+}
+#psp-essentials .timing li:last-child { margin-right: 0px }
+#psp-essentials .summary { padding-right: 180px }
+#psp-essentials.psp-shortcode .summary { padding-right: 215px }
+#psp-essentials .project-timing {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: auto !important;
+}
+#psp-essentials .cal {
+    width: 75px;
+    display: block;
+    background: #f6f6f6;
+    margin: 5px 0 0 0;
+}
+#psp-essentials .cal .year {
+    background: #f3f3f3;
+    font-size: 10px;
+    text-align: center;
+    padding: 0;
+    display: block;
+}
+#psp-essentials .cal .month {
+    text-transform: uppercase;
+    background: #99C262;
+    color: #fff;
+    padding: 3px;
+    text-align: center;
+    display: block;
+}
+#psp-essentials .cal .day {
+    font-size: 24px;
+    text-align: center;
+    padding: 15px 0;
+    color: #333;
+    display: block;
+}
+/* Login */
+#psp-login {
+    background: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    margin: 60px auto;
+    max-width: 350px;
+    box-shadow: 0 0 20px rgba(0,0,0,.03);
+    -webkit-animation: fadein 3s; /* Safari and Chrome */
+    -moz-animation: fadein 3s; /* Firefox */
+    -ms-animation: fadein 3s; /* Internet Explorer */
+    -o-animation: fadein 3s; /* Opera */
+    animation: fadein 3s;
+}
+#psp-login input[type=text], #psp-login input[type=password] { border: 1px solid #ddd; border-radius: 3px; padding: 10px 5px; }
+#psp-login #wp-submit { background: #99C262; padding: 10px 15px; border-radius: 4px; color: #fff; font-weight: bold; font-size: 14px; border: 0px;}
+
+@keyframes fadein { 
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+/* Firefox */
+@-moz-keyframes fadein { 
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+/* Safari and Chrome */
+@-webkit-keyframes fadein { 
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+/* Internet Explorer */
+@-ms-keyframes fadein { 
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+/* Opera */
+@-o-keyframes fadein { 
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+#psp-login h2 {
+    margin: -15px -15px 15px -15px;
+    text-align: center;
+    padding: 10px;
+    background: #3299bb;
+    color: #fff;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 5px 0px rgba(0,0,0,.025);
+}
+#psp-login input[type=submit] {
+    text-align: right;
+    display: inline-block;
+    margin: 5px 0;
+}
+#psp-login #loginform p { margin: 0 0 10px 0 }
+#psp-login label {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #444;
+}
+#psp-login input[type='text'],
+#psp-login input[type='password'] { width: 96% }
+#psp-login p.forgetmenot label {
+    font-weight: normal;
+    text-transform: none;
+}
+#psp-login p.forgetmenot { float: left }
+#psp-login p.submit { float: right }
+#psp-login #nav {
+    clear: both;
+    text-align: center;
+    padding: 20px 0 0 0;
+    font-size: 12px;
+}
+/* Progress */
+#psp-progress {
+    background: #fff;
+    padding: 75px 100px;
+    text-align: center;
+}
+#psp-progress h2 {
+    text-align: center;
+    font-size: 36px;
+}
+#psp-progress p.progress, .psp-shortcode p.progress {
+    border-radius: 2px 2px 0 2px;
+    background: #fff;
+    margin: 0 !important;
+    height: 35px;
+    background: #f3f3f3;
+    text-align: left;
+	padding: 0 !important;
+	border: 0 !important;
+}
+.psp-shortcode p.progress { background: #f3f3f3; }
+p.progress span {
+    display: inline-block;
+    height: 35px;
+    background: #3299BB;
+    text-align: right;
+    border-radius: 2px 0 0 2px;
+}
+p.progress span b {
+    line-height: 35px;
+    padding: 0 8px 0 0;
+    color: #fff;
+    font-size: 18px;
+    font-weight: normal;
+}
+ul.psp-milestones {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: table;
+    width: 100%;
+}
+ul.psp-milestones li {
+    display: table-cell;
+    text-align: center;
+    position: relative;
+    width: 50%;
+    padding: 0px 5% 60px 5%;
+    background: url('../images/position_indicator.gif') top center repeat-y;
+}
+.psp-milestones li div {
+    background: #fff;
+    padding: 40px 0 0 0px;
+}
+.bottom-milestones li {
+    padding-top: 60px !important;
+    padding-bottom: 0px !important;
+}
+.bottom-milestones li div { padding: 0 0 100px 0 }
+.progress-table span,
+.psp-milestones li span {
+    font-size: 14px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    background: #666;
+    color: #fff;
+    font-weight: bold;
+}
+.psp-milestones li span { margin: 8px auto }
+.top-milestones li {
+    background-position: bottom center;
+    padding: 0px 5% 110px 5%;
+    vertical-align: top;
+}
+.top-milestones li span { }
+.bottom-milestones li {
+    padding: 110px 5% 0 5%;
+    vertical-align: bottom;
+}
+.psp-milestones li.completed span,
+.progress-table th.completed span { background: #3299bb }
+.psp-milestones li h4,
+.psp-milestones li p { padding: 0 50px }
+.psp-milestones li h4 {
+    color: #333;
+    margin: 15px 0 4px 0 !important;
+}
+.progress-table h4 {
+    color: #333;
+    margin: 0 0 4px 0 !important;
+}
+.psp-milestones li p,
+.progress-table p {
+    font-size: 14px;
+    line-height: 1.65em;
+    margin: 0;
+    color: #666;
+}
+table.progress-table {
+    display: none;
+    border: 0px !important;
+}
+.psp-shortcode table.progress-table,
+.progress-table.psp-shortcode {
+    display: block;
+    margin-top: 30px;
+}
+table.progress-table th,
+table.progress-table td {
+    padding: 15px 5px;
+    vertical-align: top;
+    border: 0px;
+}
+
+.milestone-options-full { display: none !important; }
+
+/* ============================ */
+/* = Custom Milestone Spacing = */
+/* ============================ */
+.top-milestones.frequency-fifths { width: 80% }
+.bottom-milestones.frequency-fifths {
+    width: 80%;
+    margin-left: 20%;
+}
+.psp-50-milestone { margin-left: 25% }
+.psp-20-milestone { }
+.psp-40-milestone { margin-left: 20% }
+/* ========================= */
+/* = Shortcode Adjustments = */
+/* ========================= */
+/*
+.psp-shortcode .psp-milestones li span { left: 0 }
+.psp-shortcode .psp-milestones li {
+    float: left;
+    width: auto;
+    background: transparent;
+    text-align: left;
+    min-height: 50px;
+    padding: 20px 0 20px 40px;
+}
+*/
+.psp-shortcode .psp-milestones li h4 { margin: 0 0 4px 0 !important }
+/* Milestones */
+#psp-phases {
+    display: table;
+    width: 100%;
+    border-top: 5px solid #f1f2f7;
+    border-bottom: 5px solid #f1f2f7;
+}
+.psp-row {
+    display: table-row;
+    width: 100%;
+}
+.psp-phase {
+    display: table-cell;
+    width: 44%;
+    padding: 20px;
+    background: #fff;
+    border: 5px solid #F1F2F7;
+}
+.psp-shortcode-phases .psp-phase {
+    display: block;
+    clear: both;
+    width: auto;
+    padding: 20px;
+    margin: 20px 0 0 0;
+}
+.graph-complete {
+    text-align: center;
+    color: #999;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+.graph-complete span {
+    display: block;
+    color: #333;
+    font-size: 36px;
+    padding: 0 0 4px 0;
+}
+#psp-phases h3,
+.psp-phase h3 {
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 1.5em;
+    margin: -20px -20px 20px -20px !important;
+    background: #3299BB;
+    color: #fff;
+    padding: 15px 90px 15px 20px;
+    box-shadow: 0 5px 0px rgba(0,0,0,.03);
+    position: relative;
+}
+.psp-phase h4 { font-size: 18px;  }
+.psp-top-complete { position: absolute; right: 0; bottom: 0; top: 0; color: #fff; text-align: center; padding: 12px 0 0 0; line-height: 1em; width: 90px; border-left: 1px solid rgba(255,255,255,.5); }
+.psp-top-complete b { font-size: 12px; text-transform: uppercase; opacity: .7; display: block; }
+
+.psp-phase h4 span { font-weight: normal }
+.psp-phase-overview {
+    margin-bottom: 5px;
+    padding-bottom: 20px;
+}
+.psp-chart {
+    width: 50%;
+    float: right;
+    position: relative;
+}
+.psp-phase-info {
+    width: 48%;
+    float: left;
+}
+
+.small-chart { width: 100px; height: 100px; float: right; }
+
+.psp-chart div {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+}
+.psp-chart div svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.psp-chart .tooltip {
+    margin-left: -5px;
+    border-radius: 3px;
+    padding: 5px;
+}
+.psp-high-level {
+    display: table;
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+.psp-high-level ul {
+    list-style: none;
+    margin: 20px 0;
+    padding: 0;
+    display: table-row;
+    list-style: none;
+    width: 100%;
+}
+.psp-high-level li {
+    display: table-cell;
+    padding: 5px 10px;
+    text-align: center;
+    background: #f3f3f3;
+    text-transform: uppercase;
+    font-size: 12px;
+    list-style: none;
+    width: 50%;
+}
+.psp-high-level li span {
+    font-size: 24px;
+    display: block;
+    padding-top: 5px;
+    text-transform: none;
+}
+.psp-high-level li:first-child { border-right: 5px solid #fff }
+.psp-chart-legend {
+    margin: 0;
+    padding: 0;
+    list-style: none !important;
+}
+.psp-chart-legend li {
+    list-style: none;
+    text-align: center;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #444;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+    padding: 0;
+	list-style: none !important;
+}
+.psp-chart-legend li:nth-child(1) { color: #3299BB }
+.psp-chart-legend li:nth-child(2) {
+    color: #F3F3F3;
+    display: none;
+}
+.color-teal .psp-chart-legend li:nth-child(1) { color: #4ECDC4 }
+.color-green .psp-chart-legend li:nth-child(1) { color: #CBE86B }
+.color-pink .psp-chart-legend li:nth-child(1) { color: #FF6B6B }
+.color-maroon .psp-chart-legend li:nth-child(1) { color: #C44D58 }
+.psp-chart-legend li.completed-datapoint { color: #f3f3f3 !important }
+
+/* ========= */
+/* = Tasks = */
+/* ========= */
+
+.psp-task-list-wrapper { margin: 10px 0 0 0; padding: 15px 0 0 0; border-top: 1px solid #f3f3f3 }
+.psp-task-list-wrapper h4 { margin: 0; line-height: 30px; }
+.psp-task-list-wrapper h4 a { color: #333; text-decoration: none; display: block; height: 35px; line-height: 35px; padding: 0 0 0 38px; background: url('../images/down-arrow.png') left center no-repeat; }
+.psp-task-list-wrapper h4 a.active { background: url('../images/up-arrow.png') left center no-repeat; }
+.psp-task-list-wrapper h4 a:hover { opacity: 0.8;  }
+.psp-task-list-wrapper h4 span { text-transform: uppercase; font-size: 12px; letter-spacing: 1px; font-weight: bold; float: right; margin-top: -2px; color: #555; }
+
+
+
+
+.psp-task-list {
+    list-style: none !important;
+    margin: 0 0 10px 0 !important;
+    padding: 20px 0 0 0 !important;
+}
+.psp-task-list li {
+    margin: 0 0 1px 0 !important;
+    padding: 3px !important;
+    position: relative;
+    clear: both;
+    list-style: none !important;
+}
+.psp-task-list li.progress {
+    background: #a5b62c;
+    color: #fff;
+}
+.psp-task-list li span, span.psp-task-bar {
+    display: block;
+    height: 20px;
+    background: #f3f3f3;
+}
+.psp-task-list li strong { font-weight: normal }
+.psp-shortcode-phases .psp-task-list li span { background: #f3f3f3 }
+.psp-task-list em.status, span.psp-task-bar em.status {
+    background: #3299BB;
+    color: #fff;
+    display: block;
+    height: 20px;
+    float: left;
+}
+.color-teal em.status { background: #4ECDC4 }
+.color-teal h3 { background: #4ecdc4 !important }
+.color-green em.status { background: #CBE86B }
+.color-green h3 { background: #CBE86B !important }
+.color-pink em.status { background: #FF6B6B }
+.color-pink h3 { background: #ff6b6b !important }
+.color-maroon em.status { background: #C44D58 }
+.color-maroon h3 { background: #c44d58 !important }
+.psp-task-list li strong {
+    display: block;
+    clear: both;
+}
+/* ============== */
+/* = Discussion = */
+/* ============== */
+#psp-discussion {
+    background: #2A3542;
+    padding: 30px 0;
+}
+#psp-discussion a { color: #3299BB }
+#psp-discussion .wrapper {
+    border-radius: 4px;
+    background: #fff;
+}
+#psp-discussion .discussion-content { padding: 15px }
+#psp-discussion ol.commentlist {
+    list-style: none;
+    margin: 60px 0;
+    padding: 0;
+}
+#psp-discussion ol.commentlist li.comment {
+    margin: 0 0 15px 0;
+    padding: 0 0 15px 0;
+    list-style: none;
+    position: relative;
+    clear: both;
+}
+#psp-discussion div.comment-body { max-width: 600px }
+#psp-discussion div.comment-author {
+    padding-left: 20px;
+    text-align: center;
+    width: 64px;
+}
+#psp-discussion div.comment-author img { border-radius: 100% }
+#psp-discussion div.comment-author cite {
+    font-weight: bold;
+    font-style: normal;
+    display: block;
+    clear: both;
+}
+#psp-discussion div.comment-text {
+    background: #f6f6f6;
+    padding: 15px;
+}
+#psp-discussion li.odd div.comment-text { background: #F1F2F7 }
+#psp-discussion li.odd .psp-bubble {
+    border-top: 20px solid #F1F2F7;
+    float: right;
+    margin: 0 35px 10px 0;
+}
+#psp-discussion li.odd div.comment-author {
+    float: right;
+    padding: 0 20px 0 0;
+    clear: right;
+    line-height: 1.5em;
+}
+#psp-discussion div.comment-text p { margin: 0 0 8px 0 }
+#psp-discussion div.comment-date {
+    font-size: 11px;
+    color: #666;
+    padding: 15px 0 0 0;
+}
+#psp-discussion li.bypostauthor > div.comment-body div.comment-text {
+    background: #A5B62C;
+    color: #fff;
+}
+#psp-discussion li.bypostauthor > div.comment-body .psp-bubble { border-top: 20px solid #a5b62c }
+#psp-discussion li.bypostauthor > div.comment-body a { color: #fff !important }
+#psp-discussion li.bypostauthor > div.comment-body div.comment-date { color: #eee }
+.psp-bubble {
+    width: 0;
+    height: 0;
+    border-left: 0px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #f6f6f6;
+    display: block;
+    margin: 0 0 10px 50px;
+}
+#psp-discussion ol.commentlist ul.children {
+    padding: 30px 0 30px 50px;
+    margin: 0;
+}
+#psp-discussion .comment-awaiting-moderation {
+    color: #666;
+    padding: 0 0 12px 0;
+}
+#psp-discussion #commentform input,
+#commentform textarea {
+    font-weight: bold;
+    display: block;
+    margin: 8px 0 0 0;
+}
+#psp-discussion p.form-allowed-tags {
+    background: #f3f3f3;
+    padding: 15px;
+    color: #444;
+    font-size: 12px;
+}
+
+/* ============== */
+/* = Shortcodes = */
+/* ============== */
+
+.psp-part-project { margin: 15px 0; padding: 15px 0; clear: both; }
+
+.psp_project_list {
+    width: 100%;
+    background: #fdfdfd;
+    border: 1px solid #efefef;
+    padding: 5px;
+    border-collapse: collapse;
+    margin: 30px 0;
+}
+.psp_project_list th {
+    background: #2a3542;
+    color: #ddd !important;
+    text-align: left;
+    padding: 10px;
+    font-size: 115%;
+    font-weight: normal;
+}
+.psp_project_list td {
+    padding: 10px !important;
+    vertical-align: middle;
+    border: 0px !important;
+}
+.psp_project_list tr:nth-child(odd) td { background: #fafafa }
+.psp_project_list td p { margin: 0 !important }
+.psp_project_list td a {
+    font-weight: bold;
+    color: #2a3542;
+    font-size: 110%;
+}
+.psp_pl_col1 { width: 30% }
+.psp_pl_col2 { width: 50% }
+.psp-single-project { padding: 30px 0 }
+.single-project-phases { padding: 20px 0 }
+
+/* Dashboard Widget */
+
+.psp-dashboard-widget { padding: 20px; background: #f3f3f3; }
+.psp-dashboard-widget hr { clear: both; border-bottom: 1px solid #ddd; display: block; padding: 20px 0; background: transparent; }
+
+.psp-dashboard-widget-table { width: 100%; border: 0px; margin: 10px 0 30px 0; border-collapse: collapse;}
+.psp-dashboard-widget-table th { background: #2A3542; color: #ddd; text-transform: uppercase; text-align: left; border: 0px; padding: 5px; }
+.psp-dashboard-widget-table tr { background: #f9f9f9; }
+.psp-dashboard-widget-table tr:nth-child(odd) { background: #fcfcfc !important; }
+.psp-dashboard-widget-table tr td { padding: 5px; }
+
+.psp-dashboard-widget p.progress strong { color: #fff; padding: 0 5px 0 0; }
+.psp-dashboard-widget p.progress { margin: 0 !important; padding: 0 !important; }
+
+.psp-projects-overview { list-style: none; margin: 0; padding: 0; }
+.psp-projects-overview li { width: 25%; padding: 5px 1.5%; float: left;  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
+.psp-projects-overview span { display: block; font-size: 64px; line-height: 1em; text-align: center; font-weight: bold; color: #333;}
+.psp-projects-overview strong { padding: 4px 0; font-size: 12px; text-transform: uppercase; text-align: center; display: block; color: #777;}
+
+.psp-dw-active { color: #FF6B6B !important; }
+
+#psp_dashboard_overview h4 { text-align: center; margin: 30px 0; text-transform: uppercase; color: #999; }
+#psp_dashboard_overview hr { border: 1px solid #efefef; height: 1px; display: block; clear: both; }
+
+/* Task Table */
+
+th.psp-tt-tasks,
+th.pp-tt-phase { width: 25%; }
+
+th.pp-tt-complete { width: 50%; }
+
+/* =============== */
+/* = Percetenages = */
+/* =============== */
+.psp-1 { width: 1% }
+.psp-2 { width: 2% }
+.psp-3 { width: 3% }
+.psp-4 { width: 4% }
+.psp-5 { width: 5% }
+.psp-6 { width: 6% }
+.psp-7 { width: 7% }
+.psp-8 { width: 8% }
+.psp-9 { width: 9% }
+.psp-10 { width: 10% }
+.psp-11 { width: 11% }
+.psp-12 { width: 12% }
+.psp-13 { width: 13% }
+.psp-14 { width: 14% }
+.psp-15 { width: 15% }
+.psp-16 { width: 16% }
+.psp-17 { width: 17% }
+.psp-18 { width: 18% }
+.psp-19 { width: 19% }
+.psp-20 { width: 20% }
+.psp-21 { width: 21% }
+.psp-22 { width: 22% }
+.psp-23 { width: 23% }
+.psp-24 { width: 24% }
+.psp-25 { width: 25% }
+.psp-26 { width: 26% }
+.psp-27 { width: 27% }
+.psp-28 { width: 28% }
+.psp-29 { width: 29% }
+.psp-30 { width: 30% }
+.psp-31 { width: 31% }
+.psp-32 { width: 32% }
+.psp-33 { width: 33% }
+.psp-34 { width: 34% }
+.psp-35 { width: 35% }
+.psp-36 { width: 36% }
+.psp-37 { width: 37% }
+.psp-38 { width: 38% }
+.psp-39 { width: 39% }
+.psp-40 { width: 40% }
+.psp-41 { width: 41% }
+.psp-42 { width: 42% }
+.psp-43 { width: 43% }
+.psp-44 { width: 44% }
+.psp-45 { width: 45% }
+.psp-46 { width: 46% }
+.psp-47 { width: 47% }
+.psp-48 { width: 48% }
+.psp-49 { width: 49% }
+.psp-50 { width: 50% }
+.psp-51 { width: 51% }
+.psp-52 { width: 52% }
+.psp-53 { width: 53% }
+.psp-54 { width: 54% }
+.psp-55 { width: 55% }
+.psp-56 { width: 56% }
+.psp-57 { width: 57% }
+.psp-58 { width: 58% }
+.psp-59 { width: 59% }
+.psp-60 { width: 60% }
+.psp-61 { width: 61% }
+.psp-62 { width: 62% }
+.psp-63 { width: 63% }
+.psp-64 { width: 64% }
+.psp-65 { width: 65% }
+.psp-66 { width: 66% }
+.psp-67 { width: 67% }
+.psp-68 { width: 68% }
+.psp-69 { width: 69% }
+.psp-70 { width: 70% }
+.psp-71 { width: 71% }
+.psp-72 { width: 72% }
+.psp-73 { width: 73% }
+.psp-74 { width: 74% }
+.psp-75 { width: 75% }
+.psp-76 { width: 76% }
+.psp-77 { width: 77% }
+.psp-78 { width: 78% }
+.psp-79 { width: 79% }
+.psp-80 { width: 80% }
+.psp-81 { width: 81% }
+.psp-82 { width: 82% }
+.psp-83 { width: 83% }
+.psp-84 { width: 84% }
+.psp-85 { width: 85% }
+.psp-86 { width: 86% }
+.psp-87 { width: 87% }
+.psp-88 { width: 88% }
+.psp-89 { width: 89% }
+.psp-90 { width: 90% }
+.psp-91 { width: 91% }
+.psp-92 { width: 92% }
+.psp-93 { width: 93% }
+.psp-94 { width: 94% }
+.psp-95 { width: 95% }
+.psp-96 { width: 96% }
+.psp-97 { width: 97% }
+.psp-98 { width: 98% }
+.psp-99 { width: 99% }
+.psp-100 { width: 100% }
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.cf:before,
+.cf:after,
+li.comment:before,
+li.comment:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+.cf:after,
+li.comment:after { clear: both }
+/**
+ * For IE 6/7 only
+ * Include this rule to trigger hasLayout and contain floats.
+ */
+.cf,
+li.comment { *zoom: 1 }
+@media only screen and (max-width: 1200px) { 
+    .psp-single-project .wrapper,
+    .psp-standalone-page .wrapper { width: 990px !important }
+}
+@media only screen and (max-width: 990px) { 
+    .psp-single-project .wrapper,
+    .psp-standalone-page .wrapper { width: 768px !important }
+    ul.psp-milestones li p,
+    ul.psp-milestones li h4 {
+        padding: 0;
+        display: none;
+    }
+    .progress-table,
+	.milestone-options-full { display: block !important; }
+    p.progress { margin-bottom: 30px }
+}
+@media only screen and (max-width: 800px) { 
+    .psp-single-project .wrapper,
+    .psp-standalone-page .wrapper { width: 600px !important }
+    ul.psp-milestones { display: none }
+    body.psp-single-project .psp-phase {
+        display: block;
+        width: 100%;
+        border-left: 0px;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .psp-row { display: block }
+    #psp-essentials #psp-description {
+        width: 96%;
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    #psp-essentials #project-documents {
+        width: 96%;
+        padding: 3%;
+        float: none;
+    }
+    #psp-title {
+        position: static;
+        height: auto;
+    }
+    .psp-standalone-page #overview { padding-top: 0px }
+}
+@media only screen and (max-width: 800px) { 
+    .psp-single-project .wrapper,
+    .psp-standalone-page .wrapper { width: 100% !important }
+    #psp-essentials { margin-top: 0px }
+    #psp-essentials #psp-description {
+        width: 88% !important;
+        padding: 20px 6%;
+        display: block;
+        margin-top: 0px;
+        border-radius: 0px;
+    }
+    #project-documents {
+        padding: 20px 6% !important;
+        width: 88% !important;
+        text-align: center;
+    }
+    #project-documents li {
+        margin: 0 0 20px 0;
+        padding: 0 0 20px 0;
+    }
+    #psp-main-nav { display: none }
+    .psp-single-project .wrapper {
+        width: 94% !important;
+        padding: 3%;
+    }
+    #psp-essentials div:first-child { float: none }
+    #psp-essentials .summary { padding-right: 0px }
+    #psp-essentials .project-timing {
+        position: static;
+        width: 100%;
+        padding-top: 15px;
+    }
+    .psp-phase {
+        display: block;
+        width: auto !important;
+    }
+    #psp-progress { padding: 75px 20px }
+    #psp-essentials div h4 {
+        text-align: center;
+        margin: 20px 0 10px 0;
+    }
+    ul.timing {
+        width: 165px;
+        margin: 5px auto !important;
+    }
+    #psp-discussion .wrapper,
+    #overview .wrapper { padding: 0 !important }
+    #psp-discussion .discussion-content { padding: 15px }
+    #psp-progress h2 { font-size: 20px }
+    .psp-phase-info {
+        float: none;
+        width: auto !important;
+    }
+    .psp-chart {
+        float: none;
+        max-width: 420px;
+        margin: 20px auto;
+    }
+    #psp-essentials.psp-shortcode .summary { padding-right: 0px }
+    #psp-title h1 {
+        line-height: 1.1em !important;
+        text-align: center;
+        float: none;
+    }
+    #psp-title h1 span { display: block }
+    .psp_project_list th { display: none }
+    .psp_project_list tr { display: block }
+    .psp_project_list td {
+        display: block;
+        text-align: center;
+    }
+    .psp-standalone-page code {
+        overflow: hidden;
+        white-space: normal;
+    }
+	
+	.psp-branding-wrapper { margin: 0 15px;}
+}
