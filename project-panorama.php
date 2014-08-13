@@ -89,8 +89,10 @@ function add_license_after_row() {
 	
 $plugin = plugin_basename(__FILE__);
 
-add_filter("plugin_action_links_$plugin", 'add_license_link');
-add_action('after_plugin_row_project-panorama/project-panorama.php', 'add_license_after_row');
+if(PSP_PLUGIN_TYPE == 'professional') { 
+	add_filter("plugin_action_links_$plugin", 'add_license_link');
+	add_action('after_plugin_row_project-panorama/project-panorama.php', 'add_license_after_row');
+}
 
 /* When activated, call the post types and flush the rewrite rules */
 
