@@ -58,17 +58,17 @@ http://www.projectpanorama.com/docs/common-issues/
 A. Chances are, someone else has asked it. Check out the support forum at: 
 http://www.projectpanorama.com/forums
 
-= Q. I'm getting 404 errors on my projects or other plugins
+= Q. I'm getting 404 errors on my projects or other plugins =
 
 First Try going to settings > permalinks and resaving your permalinks
 If that doesn't work, there is probably another plugin thats conflicting with Panorama. You can try editing the /project-panorama/lib/data_model.php file and removing line 56 that says "flush_rewrite_rules();" - Then resave your permalinks.
 
-= Q. Logging into a project redirects me to another page
+= Q. Logging into a project redirects me to another page =
   A. This happens when you have another plugin that alters standard login redirects, often a ticketing system or other "project management like" plugin. You will need to have the author of that plugin help you remove the global user redirect.
 
 == Credit ==
 
-Project Panorama is powered by Advanced Custom Fields and the Advanced Custom Field Repeater Addon. Advanced Custom Field Repeater Addon may not be removed, distributed or sold without purchase from Advanced Custom Fields (http://www.advancedcustomfields.com). 
+Project Panorama is powered by Advanced Custom Fields (http://www.advancedcustomfields.com). 
 
 == Changelog ==
 
