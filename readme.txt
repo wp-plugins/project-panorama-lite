@@ -1,5 +1,5 @@
 === Project Panorama Lite ===
-Contributors: Ross Johnson
+Contributors: 3pointross
 Tags: project, management, project management, basecamp, status, client, admin, intranet
 Requires at least: 3.5.0
 Tested up to: 3.9
