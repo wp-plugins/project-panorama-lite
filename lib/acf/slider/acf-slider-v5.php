@@ -1,202 +1,161 @@
 <?php
 
-class acf_field_num_slider extends acf_field
-{
-	// vars
-	var $settings, // will hold info such as dir / path
-		$defaults; // will hold default field options
-
-
+class acf_field_num_slider extends acf_field {
+	
+	
 	/*
 	*  __construct
 	*
-	*  Set name / label needed for actions / filters
+	*  This function will setup the field type data
 	*
-	*  @since	3.6
-	*  @date	23/01/13
+	*  @type	function
+	*  @date	5/03/2014
+	*  @since	5.0.0
+	*
+	*  @param	n/a
+	*  @return	n/a
 	*/
-
-	function __construct()
-	{
-		// vars
+	
+	function __construct() {
+		
+		/*
+		*  name (string) Single word, no spaces. Underscores allowed
+		*/
+		
 		$this->name = 'num_slider';
-		$this->label = __('Number Slider','acf-SLIDER');
-		$this->category = __("jQuery",'acf'); // Basic, Content, Choice, etc
+		
+		
+		/*
+		*  label (string) Multiple words, can include spaces, visible when selecting a field type
+		*/
+		
+		$this->label = __('Number Slider', 'acf-num_slider');
+		
+		
+		/*
+		*  category (string) basic | content | choice | relational | jquery | layout | CUSTOM GROUP NAME
+		*/
+		
+		$this->category = 'basic';
+		
+		
+		/*
+		*  defaults (array) Array of default settings which are merged into the field object. These are used later in settings
+		*/
+		
 		$this->defaults = array(
-			// add default here to merge into your field.
-			// This makes life easy when creating the field options as you don't need to use any if( isset('') ) logic. eg:
-			//'preview_size' => 'thumbnail'
+			'font_size'	=> 14,
 		);
-
-
+		
+		
+		/*
+		*  l10n (array) Array of strings that are used in JavaScript. This allows JS strings to be translated in PHP and loaded via:
+		*  var message = acf._e('FIELD_NAME', 'error');
+		*/
+		
+		$this->l10n = array(
+			'error'	=> __('Error! Please enter a higher value', 'acf-num_slider'),
+		);
+		
+				
 		// do not delete!
-    parent::__construct();
-
-
-    // settings
-		$this->settings = array(
-			'path' => apply_filters('acf/helpers/get_path', __FILE__),
-			'dir' => apply_filters('acf/helpers/get_dir', __FILE__),
-			'version' => '1.0.0'
-		);
-
+    	parent::__construct();
+    	
 	}
-
-
+	
+	
 	/*
-	*  create_options()
+	*  render_field_settings()
 	*
-	*  Create extra options for your field. This is rendered when editing a field.
-	*  The value of $field['name'] can be used (like bellow) to save extra data to the $field
+	*  Create extra settings for your field. These are visible when editing a field
 	*
 	*  @type	action
 	*  @since	3.6
 	*  @date	23/01/13
 	*
-	*  @param	$field	- an array holding all the field's data
+	*  @param	$field (array) the $field being edited
+	*  @return	n/a
 	*/
-
-	function create_options($field)
-	{
-		// defaults?
+	
+	function render_field_settings( $field ) {
+		
 		/*
-		$field = array_merge($this->defaults, $field);
+		*  acf_render_field_setting
+		*
+		*  This function will create a setting for your field. Simply pass the $field parameter and an array of field settings.
+		*  The array of settings does not require a `value` or `prefix`; These settings are found from the $field array.
+		*
+		*  More than one setting can be added by copy/paste the above code.
+		*  Please note that you must also have a matching $defaults value for the field name (font_size)
 		*/
-
-		// key is needed in the field names to correctly save the data
-		$key = $field['name'];
-
-
-		// Create Field Options HTML
-		?>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Minimum", 'acf'); ?></label>
-		<p class="description"><?php _e("Minimum number users can choose", 'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-
-		do_action('acf/create_field', array(
-			'type'    =>  'text',
-			'name'    =>  'fields[' . $key . '][minimum_number]',
-			'value'   =>  $field['minimum_number'],
-			'layout'  =>  'horizontal'
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Minimum Number','acf-num_slider'),
+			'instructions'	=> __('What\'s the lowest number a user can choose','acf-num_slider'),
+			'type'			=> 'number',
+			'name'			=> 'minimum_number'
+		));
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Maximum Number','acf-num_slider'),
+			'instructions'	=> __('Maximum number users can choose','acf-num_slider'),
+			'type'			=> 'number',
+			'name'			=> 'max_number',
 		));
 
-		?>
-	</td>
-</tr>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Maximum", 'acf'); ?></label>
-		<p class="description"><?php _e("Maximum number users can choose", 'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-
-		do_action('acf/create_field', array(
-			'type'    =>  'text',
-			'name'    =>  'fields[' . $key . '][max_number]',
-			'value'   =>  $field['max_number'],
-			'layout'  =>  'horizontal'
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Stepping','acf-num_slider'),
+			'instructions'	=> __('The amount each movement will adjust','acf-num_slider'),
+			'type'			=> 'number',
+			'name'			=> 'inc_number',
 		));
-
-		?>
-	</td>
-</tr>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Stepping", 'acf'); ?></label>
-		<p class="description"><?php _e("How much to increment on moving", 'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-
-		do_action('acf/create_field', array(
-			'type'    =>  'text',
-			'name'    =>  'fields[' . $key . '][inc_number]',
-			'value'   =>  $field['inc_number'],
-			'layout'  =>  'horizontal'
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Starting Value','acf-num_slider'),
+			'instructions'	=> __('The amount the slider should start at','acf-num_slider'),
+			'type'			=> 'number',
+			'name'			=> 'start_number',
 		));
-
-		?>
-	</td>
-</tr>
-<tr class="field_option field_option_<?php echo $this->name; ?>">
-	<td class="label">
-		<label><?php _e("Starting Value", 'acf'); ?></label>
-		<p class="description"><?php _e("What should the project start at?", 'acf'); ?></p>
-	</td>
-	<td>
-		<?php
-
-		do_action('acf/create_field', array(
-			'type'    =>  'text',
-			'name'    =>  'fields[' . $key . '][start_number]',
-			'value'   =>  $field['start_number'],
-			'layout'  =>  'horizontal'
-		));
-
-		?>
-	</td>
-</tr>
-		<?php
 
 	}
-
-
+	
+	
+	
 	/*
-	*  create_field()
+	*  render_field()
 	*
 	*  Create the HTML interface for your field
 	*
-	*  @param	$field - an array holding all the field's data
+	*  @param	$field (array) the $field being rendered
 	*
 	*  @type	action
 	*  @since	3.6
 	*  @date	23/01/13
+	*
+	*  @param	$field (array) the $field being edited
+	*  @return	n/a
 	*/
-
-	function create_field( $field )
-	{
-		// defaults?
+	
+	function render_field( $field ) {
+		
+		
 		/*
-		$field = array_merge($this->defaults, $field);
+		*  Review the data of $field.
+		*  This will show what data is available
 		*/
-
-		// perhaps use $field['preview_size'] to alter the markup?
-
-
-		// create Field HTML
+		
 		?>
+		
 		<div>
+						
+			<p><span id="sliderval"><?php echo $field['start_number']; ?></span>% <?php _e('Complete','psp_projects'); ?></p>
 			
-			<?php 
-			
-			$o = array('class', 'name', 'value');
-			$e = '';
-			
-			 ?>
-			
-			<p><span id="sliderval"><?php echo $field['start_number']; ?></span>% Complete</p>
-			
-			<input type="hidden" 
-			<?php 
-			
-			foreach( $o as $k )
-			{
-				echo ' ' . $k . '="' . esc_attr( $field[ $k ] ) . '"';	
-			}
-			?>
-			
-			id="slidervalue">
+			<input type="hidden" name="<?php echo esc_attr($field['name']) ?>" value="<?php echo esc_attr($field['value']) ?>" id="slidervalue">
 			
 			<div id="slider"></div>
 			
 			<script type="text/javascript">
 				jQuery(function() { 
-					
 					initVal = jQuery('#slidervalue').val();
 					jQuery('#sliderval').html(initVal); 
 					
@@ -213,30 +172,36 @@ class acf_field_num_slider extends acf_field
 			</script>
 			
 		</div>
-		<?php
+		
+		<?php 
+		
 	}
-
-
+	
+		
 	/*
 	*  input_admin_enqueue_scripts()
 	*
 	*  This action is called in the admin_enqueue_scripts action on the edit screen where your field is created.
-	*  Use this action to add css + javascript to assist your create_field() action.
+	*  Use this action to add CSS + JavaScript to assist your render_field() action.
 	*
-	*  $info	http://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
-	*  @type	action
+	*  @type	action (admin_enqueue_scripts)
 	*  @since	3.6
 	*  @date	23/01/13
+	*
+	*  @param	n/a
+	*  @return	n/a
 	*/
 
-	function input_admin_enqueue_scripts()
-	{
-		// Note: This function can be removed if not used
-
-
-		// register acf scripts
-		wp_register_script('acf-input-num_slider', plugins_url() . PSP_PLUGIN_DIR . '/lib/acf/slider/assets/js/jquery-ui-1.10.3.custom.min.js', array('acf-input'), $this->settings['version']);
-		wp_register_style('acf-input-num_slider', plugins_url() . PSP_PLUGIN_DIR . '/lib/acf/slider/assets/css/smoothness/jquery-ui-1.10.3.custom.min.css', array('acf-input'), $this->settings['version']);
+	
+	
+	function input_admin_enqueue_scripts() {
+		
+		/*
+		
+		$dir = plugin_dir_url( __FILE__ );
+		
+		wp_register_script('acf-input-num_slider', $dir . 'assets/js/jquery-ui-1.10.3.custom.min.js', array('acf-input'), $this->settings['version']);
+		wp_register_style('acf-input-num_slider', $dir . 'assets/css/smoothness/jquery-ui-1.10.3.custom.min.css', array('acf-input'), $this->settings['version']);
 
 
 		// scripts
@@ -248,215 +213,376 @@ class acf_field_num_slider extends acf_field
 		wp_enqueue_style(array(
 			'acf-input-num_slider',
 		));
-
+		
+		*/
+		
 	}
-
-
+	
+	
+	
+	
 	/*
 	*  input_admin_head()
 	*
 	*  This action is called in the admin_head action on the edit screen where your field is created.
-	*  Use this action to add css and javascript to assist your create_field() action.
+	*  Use this action to add CSS and JavaScript to assist your render_field() action.
 	*
-	*  @info	http://codex.wordpress.org/Plugin_API/Action_Reference/admin_head
-	*  @type	action
+	*  @type	action (admin_head)
 	*  @since	3.6
 	*  @date	23/01/13
+	*
+	*  @param	n/a
+	*  @return	n/a
 	*/
 
-	function input_admin_head()
-	{
-		// Note: This function can be removed if not used
+	/*
+		
+	function input_admin_head() {
+	
+		
+		
 	}
+	
+	*/
+	
+	
+	/*
+   	*  input_form_data()
+   	*
+   	*  This function is called once on the 'input' page between the head and footer
+   	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and 
+   	*  'acf/input_admin_head' actions because ACF did not know it was going to be used. These situations are
+   	*  seen on comments / user edit forms on the front end. This function will always be called, and includes
+   	*  $args that related to the current screen such as $args['post_id']
+   	*
+   	*  @type	function
+   	*  @date	6/03/2014
+   	*  @since	5.0.0
+   	*
+   	*  @param	$args (array)
+   	*  @return	n/a
+   	*/
+   	
+   	/*
+   	
+   	function input_form_data( $args ) {
+	   	
+		
+	
+   	}
+   	
+   	*/
+	
+	
+	/*
+	*  input_admin_footer()
+	*
+	*  This action is called in the admin_footer action on the edit screen where your field is created.
+	*  Use this action to add CSS and JavaScript to assist your render_field() action.
+	*
+	*  @type	action (admin_footer)
+	*  @since	3.6
+	*  @date	23/01/13
+	*
+	*  @param	n/a
+	*  @return	n/a
+	*/
 
-
+	/*
+		
+	function input_admin_footer() {
+	
+		
+		
+	}
+	
+	*/
+	
+	
 	/*
 	*  field_group_admin_enqueue_scripts()
 	*
 	*  This action is called in the admin_enqueue_scripts action on the edit screen where your field is edited.
-	*  Use this action to add css + javascript to assist your create_field_options() action.
+	*  Use this action to add CSS + JavaScript to assist your render_field_options() action.
 	*
-	*  $info	http://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
-	*  @type	action
+	*  @type	action (admin_enqueue_scripts)
 	*  @since	3.6
 	*  @date	23/01/13
+	*
+	*  @param	n/a
+	*  @return	n/a
 	*/
 
-	function field_group_admin_enqueue_scripts()
-	{
-		// Note: This function can be removed if not used
+	/*
+	
+	function field_group_admin_enqueue_scripts() {
+		
 	}
+	
+	*/
 
-
+	
 	/*
 	*  field_group_admin_head()
 	*
 	*  This action is called in the admin_head action on the edit screen where your field is edited.
-	*  Use this action to add css and javascript to assist your create_field_options() action.
+	*  Use this action to add CSS and JavaScript to assist your render_field_options() action.
 	*
-	*  @info	http://codex.wordpress.org/Plugin_API/Action_Reference/admin_head
-	*  @type	action
+	*  @type	action (admin_head)
 	*  @since	3.6
 	*  @date	23/01/13
+	*
+	*  @param	n/a
+	*  @return	n/a
 	*/
 
-	function field_group_admin_head()
-	{
-		// Note: This function can be removed if not used
+	/*
+	
+	function field_group_admin_head() {
+	
 	}
+	
+	*/
 
 
 	/*
 	*  load_value()
 	*
-	*  This filter is appied to the $value after it is loaded from the db
+	*  This filter is applied to the $value after it is loaded from the db
 	*
 	*  @type	filter
 	*  @since	3.6
 	*  @date	23/01/13
 	*
-	*  @param	$value - the value found in the database
-	*  @param	$post_id - the $post_id from which the value was loaded from
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$value - the value to be saved in te database
+	*  @param	$value (mixed) the value found in the database
+	*  @param	$post_id (mixed) the $post_id from which the value was loaded
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	$value
 	*/
-
-	function load_value($value, $post_id, $field)
-	{
-		// Note: This function can be removed if not used
+	
+	/*
+	
+	function load_value( $value, $post_id, $field ) {
+		
 		return $value;
+		
 	}
-
-
+	
+	*/
+	
+	
 	/*
 	*  update_value()
 	*
-	*  This filter is appied to the $value before it is updated in the db
+	*  This filter is applied to the $value before it is saved in the db
 	*
 	*  @type	filter
 	*  @since	3.6
 	*  @date	23/01/13
 	*
-	*  @param	$value - the value which will be saved in the database
-	*  @param	$post_id - the $post_id of which the value will be saved
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$value - the modified value
+	*  @param	$value (mixed) the value found in the database
+	*  @param	$post_id (mixed) the $post_id from which the value was loaded
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	$value
 	*/
-
-	function update_value($value, $post_id, $field)
-	{
-		// Note: This function can be removed if not used
+	
+	/*
+	
+	function update_value( $value, $post_id, $field ) {
+		
 		return $value;
+		
 	}
-
-
+	
+	*/
+	
+	
 	/*
 	*  format_value()
 	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is passed to the create_field action
+	*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
 	*
 	*  @type	filter
 	*  @since	3.6
 	*  @date	23/01/13
 	*
-	*  @param	$value	- the value which was loaded from the database
-	*  @param	$post_id - the $post_id from which the value was loaded
-	*  @param	$field	- the field array holding all the field options
+	*  @param	$value (mixed) the value which was loaded from the database
+	*  @param	$post_id (mixed) the $post_id from which the value was loaded
+	*  @param	$field (array) the field array holding all the field options
 	*
-	*  @return	$value	- the modified value
+	*  @return	$value (mixed) the modified value
 	*/
-
-	function format_value($value, $post_id, $field)
-	{
-		// defaults?
-		/*
-		$field = array_merge($this->defaults, $field);
-		*/
-
-		// perhaps use $field['preview_size'] to alter the $value?
-
-
-		// Note: This function can be removed if not used
-		return $value;
-	}
-
-
+		
 	/*
-	*  format_value_for_api()
-	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is passed back to the api functions such as the_field
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value	- the value which was loaded from the database
-	*  @param	$post_id - the $post_id from which the value was loaded
-	*  @param	$field	- the field array holding all the field options
-	*
-	*  @return	$value	- the modified value
-	*/
-
-	function format_value_for_api($value, $post_id, $field)
-	{
-		// defaults?
-		/*
-		$field = array_merge($this->defaults, $field);
-		*/
-
-		// perhaps use $field['preview_size'] to alter the $value?
-
-
-		// Note: This function can be removed if not used
+	
+	function format_value( $value, $post_id, $field ) {
+		
+		// bail early if no value
+		if( empty($value) ) {
+		
+			return $value;
+			
+		}
+		
+		
+		// apply setting
+		if( $field['font_size'] > 12 ) { 
+			
+			// format the value
+			// $value = 'something';
+		
+		}
+		
+		
+		// return
 		return $value;
 	}
-
-
+	
+	*/
+	
+	
+	/*
+	*  validate_value()
+	*
+	*  This filter is used to perform validation on the value prior to saving.
+	*  All values are validated regardless of the field's required setting. This allows you to validate and return
+	*  messages to the user if the value is not correct
+	*
+	*  @type	filter
+	*  @date	11/02/2014
+	*  @since	5.0.0
+	*
+	*  @param	$valid (boolean) validation status based on the value and the field's required setting
+	*  @param	$value (mixed) the $_POST value
+	*  @param	$field (array) the field array holding all the field options
+	*  @param	$input (string) the corresponding input name for $_POST value
+	*  @return	$valid
+	*/
+	
+	/*
+	
+	function validate_value( $valid, $value, $field, $input ){
+		
+		// Basic usage
+		if( $value < $field['custom_minimum_setting'] )
+		{
+			$valid = false;
+		}
+		
+		
+		// Advanced usage
+		if( $value < $field['custom_minimum_setting'] )
+		{
+			$valid = __('The value is too little!','acf-FIELD_NAME'),
+		}
+		
+		
+		// return
+		return $valid;
+		
+	}
+	
+	*/
+	
+	
+	/*
+	*  delete_value()
+	*
+	*  This action is fired after a value has been deleted from the db.
+	*  Please note that saving a blank value is treated as an update, not a delete
+	*
+	*  @type	action
+	*  @date	6/03/2014
+	*  @since	5.0.0
+	*
+	*  @param	$post_id (mixed) the $post_id from which the value was deleted
+	*  @param	$key (string) the $meta_key which the value was deleted
+	*  @return	n/a
+	*/
+	
+	/*
+	
+	function delete_value( $post_id, $key ) {
+		
+		
+		
+	}
+	
+	*/
+	
+	
 	/*
 	*  load_field()
 	*
-	*  This filter is appied to the $field after it is loaded from the database
+	*  This filter is applied to the $field after it is loaded from the database
 	*
 	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
+	*  @date	23/01/2013
+	*  @since	3.6.0	
 	*
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$field - the field array holding all the field options
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	$field
 	*/
-
-	function load_field($field)
-	{
-		// Note: This function can be removed if not used
+	
+	/*
+	
+	function load_field( $field ) {
+		
 		return $field;
-	}
-
-
+		
+	}	
+	
+	*/
+	
+	
 	/*
 	*  update_field()
 	*
-	*  This filter is appied to the $field before it is saved to the database
+	*  This filter is applied to the $field before it is saved to the database
 	*
 	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
+	*  @date	23/01/2013
+	*  @since	3.6.0
 	*
-	*  @param	$field - the field array holding all the field options
-	*  @param	$post_id - the field group ID (post_type = acf)
-	*
-	*  @return	$field - the modified field
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	$field
 	*/
-
-	function update_field($field, $post_id)
-	{
-		// Note: This function can be removed if not used
+	
+	/*
+	
+	function update_field( $field ) {
+		
 		return $field;
-	}
-
-
+		
+	}	
+	
+	*/
+	
+	
+	/*
+	*  delete_field()
+	*
+	*  This action is fired after a field is deleted from the database
+	*
+	*  @type	action
+	*  @date	11/02/2014
+	*  @since	5.0.0
+	*
+	*  @param	$field (array) the field array holding all the field options
+	*  @return	n/a
+	*/
+	
+	/*
+	
+	function delete_field( $field ) {
+		
+		
+		
+	}	
+	
+	*/
+	
+	
 }
 
 

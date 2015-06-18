@@ -179,7 +179,7 @@ class acf_field_num_slider extends acf_field
 			
 			 ?>
 			
-			<p><span id="sliderval"><?php echo $field['start_number']; ?></span>% Complete</p>
+			<p><span id="sliderval"><?php echo $field['start_number']; ?></span>% <?php _e('Complete','psp_projects'); ?></p>
 			
 			<input type="hidden" 
 			<?php 
@@ -196,7 +196,6 @@ class acf_field_num_slider extends acf_field
 			
 			<script type="text/javascript">
 				jQuery(function() { 
-					console.log('fired');
 					initVal = jQuery('#slidervalue').val();
 					jQuery('#sliderval').html(initVal); 
 					
@@ -232,11 +231,12 @@ class acf_field_num_slider extends acf_field
 	function input_admin_enqueue_scripts()
 	{
 		// Note: This function can be removed if not used
-
+		
+		/*
 
 		// register acf scripts
-		wp_register_script('acf-input-num_slider', $this->settings['dir'] . '/assets/js/jquery-ui-1.10.3.custom.min.js', array('acf-input'), $this->settings['version']);
-		wp_register_style('acf-input-num_slider', $this->settings['dir'] . '/assets/css/smoothness/jquery-ui-1.10.3.custom.min.css', array('acf-input'), $this->settings['version']);
+		wp_register_script('acf-input-num_slider', $this->settings['dir'] . 'assets/js/jquery-ui-1.10.3.custom.min.js', array('acf-input'), $this->settings['version']);
+		wp_register_style('acf-input-num_slider', $this->settings['dir'] . 'assets/css/smoothness/jquery-ui-1.10.3.custom.min.css', array('acf-input'), $this->settings['version']);
 
 
 		// scripts
@@ -248,6 +248,8 @@ class acf_field_num_slider extends acf_field
 		wp_enqueue_style(array(
 			'acf-input-num_slider',
 		));
+		
+		*/
 
 	}
 

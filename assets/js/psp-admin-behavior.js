@@ -1,23 +1,34 @@
-jQuery(function() {  
-        
-        jQuery(".datepicker").datepicker(); 
-        jQuery(".task-row :checked").each(function() { 
-            jQuery(this).parent().parent().addClass('completed'); 
+jQuery(function() {
+
+
+	// Initialize special fields if they exist
+	
+	if(jQuery('.datepicker').length) { jQuery(".datepicker").datepicker(); }
+
+	if(jQuery('.color-field').length) { jQuery('.color-field').wpColorPicker(); }
+	
+	
+	// Deal with the task rows
+			
+        jQuery(".task-row :checked").each(function() {
+            jQuery(this).parent().parent().addClass('completed');
             jQuery(this).addClass('completed');
         });
-        jQuery(".task-row :checkbox").change(function() { 
-            if(jQuery(this).hasClass('completed')) { 
-                jQuery(this).removeClass('completed'); 
+		
+        jQuery(".task-row :checkbox").change(function() {
+            if(jQuery(this).hasClass('completed')) {
+                jQuery(this).removeClass('completed');
                 jQuery(this).parent().parent().removeClass('completed');
-            } else { 
+            } else {
                 jQuery(this).parent().parent().addClass('completed');
-                jQuery(this).addClass('completed');    
+                jQuery(this).addClass('completed');
             }
         });		
-	
+
+
 		var psp_uploader;
- 
-		jQuery('#psp_upload_image_button').click(function(e) {
+
+        jQuery('#psp_upload_image_button').click(function(e) {
  
 		        e.preventDefault();
  
@@ -47,109 +58,99 @@ jQuery(function() {
 		        psp_uploader.open();
  
 		    });
+			
+			// Reset the colors to default
+        	jQuery('.psp-reset-colors').click(function() {
+
+           		jQuery('.psp-color-table input.color-field').each(function() {
+
+                	default_color = jQuery(this).attr('rel');
+                	jQuery(this).wpColorPicker('color',default_color);
+
+           	 	});
+
+            return false;
+
+        });
+
+        if(jQuery('#psp-notify-users').length) {
+
+            if(jQuery('#psp-notify-users').prop('checked')) {
+                jQuery('.psp-notification-edit').show();
+            }
+
+            jQuery('#psp-notify-users').change(function() {
+
+                if(jQuery(this).prop('checked')) {
+                    tb_show('Notify Users','#TB_inline?width=480&inlineId=psp-notification-modal&width=640&height=640');
+                }
+
+            });
+
+        }
+
+        jQuery('.psp-notification-help').click(function() {
+
+            tb_show('Notificiation Help','#TB_inline?width=480&inlineId=psp-notification-modal&width=640&height=640');
+
+        });
+
+        jQuery('.psp-notification-edit').click(function() {
+
+            tb_show('Notify Users','#TB_inline?width=480&inlineId=psp-notification-modal&width=640&height=640');
+
+        });
+
+        jQuery('.psp-notify-ok').click(function() {
+
+            pspSetNotifications();
+            tb_remove();
+            return false;
+
+        });
+
+        jQuery('.all-checkbox').change(function() {
+
+            if(jQuery(this).prop('checked')) {
+                jQuery('.psp-notify-list input').prop('checked',true);
+            } else {
+                jQuery('.psp-notify-list input').prop('checked',false);
+            }
+
+        });
+
+        jQuery('#acf-allowed_users .acf-button').click(function() {
+
+            pspShowNotifyWarning();
+
+        });
+
+        jQuery('#acf-allowed_users select.user').change(function() {
+
+            pspShowNotifyWarning();
+
+        });
+
+
 });  
 
-
-
-function PopulatePspSingleShortcode() {
-	
-	jQuery('.psp-loading').show();
-	
-	data = { 
-		action: 'psp_get_projects'
-	}
-	
-	jQuery.post(ajaxurl, data, function (response) { 
-	
-		response = response.slice(0,-1);
-		console.log(response);
-			
-		jQuery('#psp-single-project-list').html(response);
-		jQuery('.psp-loading').hide();
-	
-	});
-	
-	
+function pspShowNotifyWarning() {
+    jQuery('.psp-notify-warning').show();
 }
 
-function InsertPspProject() { 
+function pspSetNotifications() {
 
+    var psp_notification_list = jQuery('.psp-notify-user-box:checkbox:checked');
 
-	pspId = jQuery('#psp-single-project-id').val();
-	pspStyle = jQuery('input[name="psp-display-style"]:checked').val();
+    if(psp_notification_list.length) {
 
-	if(pspStyle == 'full') {
-	
-		pspOverview = jQuery('#psp-single-overview').val();
-            if(pspOverview.length) { pspOverviewAtt = 'overview="'+pspOverview+'"'; }
+        jQuery('.psp-notification-edit').show();
 
-		pspMilestones = jQuery('#psp-single-milestones').val();
-		    if(pspMilestones.length) { pspMilestonesAtt = 'milestones="'+pspMilestones+'"'; }
-
-        pspPhases = jQuery('#psp-single-phases').val();
-            if(pspPhases.length) { pspPhasesAtt = 'phases="'+pspPhases+'"'; }
-
-		pspTasks = jQuery('#psp-single-tasks').val();
-		    if(pspTasks.length) { pspTasksAtt = 'tasks="'+pspTasks+'"'; }
-
-        pspProgress = jQuery('#psp-single-progress').val();
-            if(pspProgress.length) { pspProgressAtt = 'progress="'+pspProgress+'"'; }
-	
-    	shortcode = '[project_status id="'+pspId+'" '+pspProgressAtt+' '+pspOverviewAtt+' '+pspMilestonesAtt+' '+pspPhasesAtt+' '+pspTasksAtt+']';
-		
-	} else { 
-	
-		pspPart = jQuery('#psp-part-display').val();
-		
-		if(pspPart == 'overview') { 
-		
-	    	shortcode = '[project_status_part id="'+pspId+'" display="overview"]';
-			
-		} else if (pspPart == 'documents') {
-			
-			shortcode = '[project_status_part id="'+pspId+'" display="documents"]';
-			
-		} else if (pspPart == 'progress') {
-			
-			pspPartStyle = jQuery('#psp-part-overview-progress-select').val();
-			shortcode = '[project_status_part id="'+pspId+'" display="progress" style="'+pspPartStyle+'"]';
-			
-		} else if (pspPart == 'phases') {
-			
-			pspPartStyle = jQuery('#psp-part-phases-select').val();
-			shortcode = '[project_status_part id="'+pspId+'" display="phases" style="'+pspPartStyle+'"]';
-			
-		} else if (pspPart == 'tasks') {
-			
-			pspPartStyle = jQuery('#psp-part-tasks-select').val();
-			shortcode = '[project_status_part id="'+pspId+'" display="tasks" style="'+pspPartStyle+'"]';
-			
-		}
-	
-	}
-	
-	tinymce.activeEditor.execCommand('mceInsertContent', false, shortcode);
-
-	tb_remove(); return false;
-
-}
-
-function InsertPspProjectList() { 
-
-	pspListTax = jQuery('#psp-project-taxonomy').val();
-	pspListStatus = jQuery('#psp-project-status').val();
-    pspUserAccess = jQuery('#psp-user-access').val();
-
-    if(pspUserAccess == 'on') {
-        pspAccess = 'user';
     } else {
-        pspAccess = 'all';
+
+        jQuery('.psp-notification-edit').hide();
+        jQuery('#psp-notify-users').prop('checked',false);
+
     }
-	
-	shortcode = '[project_list type="'+pspListTax+'" status="'+pspListStatus+'" access="'+pspAccess+'" ]';
-	
-	tinymce.activeEditor.execCommand('mceInsertContent', false, shortcode);
-	
-	tb_remove(); return false;
 
 }

@@ -26,9 +26,11 @@ function duplicate_post_get_copy_user_level() {
  */
 function duplicate_post_get_clone_post_link( $id = 0, $context = 'display', $draft = true ) {
 
-	if ( !$post = &get_post( $id ) )
-	return;
-	
+	$post = get_post($id);
+	if ( empty($post) ) {
+		return;
+	}
+
 	if ($draft)
 	$action_name = "duplicate_post_save_as_new_post_draft";
 	else
@@ -42,7 +44,7 @@ function duplicate_post_get_clone_post_link( $id = 0, $context = 'display', $dra
 	$post_type_object = get_post_type_object( $post->post_type );
 	if ( !$post_type_object )
 	return;
-		
+
 	return apply_filters( 'duplicate_post_get_clone_post_link', admin_url( "admin.php". $action ), $post->ID, $context );
 }
 /**
