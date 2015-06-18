@@ -12,6 +12,8 @@ WordPress project management / communication plugin designed to communicate proj
 
 WordPress project management and communication plugin designed to keep your clients and team in the loop. Display overall project status, timing, milestones and documents. 
 
+Not intended as a full functioning project management system like basecamp, rather an enhancement to existing project management solutions. Instead of sending clients to a list of tasks that have been completed or not, give them a progress bar with key milestones that indicate how the project is progressing.
+
 = Website =
 http://www.projectpanorama.com
 
