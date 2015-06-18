@@ -4,7 +4,7 @@
  * Plugin Name: Project Panorama Lite
  * Plugin URI: http://www.projectpanorama.com
  * Description: Give your team and your clients a 360 degree view of your projects
- * Version: 1.2.5
+ * Version: 1.2.5.1
  * Author: 37 MEDIA
  * Author URI: http://www.projectpanorama.com
  * License: GPL2
