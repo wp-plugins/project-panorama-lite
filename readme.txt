@@ -45,22 +45,17 @@ http://www.projectpanorama.com/support
 == Changelog ==
 
 
-= 1.2.5.3 = 
+= 1.2.5.2 = 
 
 * Document update notification fixes
 * Checked for dates before displaying, fixes notices if date isn't set
-* Fixed JS issue in IE for frontend editing
 * Switched last modified time to date on [project_list]
 * Added pagination on project listing
-* Mark project complete when done through the front end
 * If there isn't a start or end date, hide the time elapsed bar
 * [project_list] shortcode will now display a login form if access is set to user and user isn't logged in
-* Fixed bug where special characters in task names would get garbled after updates (like &, etc...)
-* Task names now support HTML
 * Added logo and home link to project dashboard page
 
 = 1.2.5.2 =
-* Fixed bug where sometimes e-mails had a broken link
 * Fixed bug where timing could be off when using an embed shortcode
 * Added a simple project list / archive page for logging in and seeing your list of projects (i.e. /panorama/project-name the login would be /panorama/)
 * Added better support for handling wide height ranges between project phases

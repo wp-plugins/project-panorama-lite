@@ -20,12 +20,12 @@ global $post, $doctype;
 
     <?php // wp_head(); Removed for visual consistency ?>
 
-    <link rel="stylesheet" type="text/css" href="<?php echo plugins_url(); ?>/project-panorama/assets/css/psp-frontend.css?ver=1.2.5">
-    <link rel="stylesheet" type="text/css" href="<?php echo plugins_url(); ?>/project-panorama/assets/css/psp-custom.css.php">
+    <link rel="stylesheet" type="text/css" href="<?php echo plugins_url(); ?>/project-panorama-lite/assets/css/psp-frontend.css?ver=1.2.5">
+    <link rel="stylesheet" type="text/css" href="<?php echo plugins_url(); ?>/project-panorama-lite/assets/css/psp-custom.css.php">
 
-	<script src="<?php echo plugins_url(); ?>/project-panorama/assets/js/jquery.js?ver=1.2.5"></script>
-    <script src="<?php echo plugins_url(); ?>/project-panorama/assets/js/psp-frontend-lib.min.js?ver=1.2.5"></script>
-    <script src="<?php echo plugins_url(); ?>/project-panorama/assets/js/psp-frontend-behavior.js?ver=1.2.5"></script>
+	<script src="<?php echo plugins_url(); ?>/project-panorama-lite/assets/js/jquery.js?ver=1.2.5"></script>
+    <script src="<?php echo plugins_url(); ?>/project-panorama-lite/assets/js/psp-frontend-lib.min.js?ver=1.2.5"></script>
+    <script src="<?php echo plugins_url(); ?>/project-panorama-lite/assets/js/psp-frontend-behavior.js?ver=1.2.5"></script>
 
     <?php wp_localize_script( 'script_handle', 'MyAjax', array( 'ajaxurl' => admin_url( 'admin-ajax.php'))); ?>
 
