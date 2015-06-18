@@ -6,7 +6,7 @@ Tested up to: 4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-WordPress project management and communication plugin designed to keep your clients and team in the loop. Display overall project status, timing, milestones and documents. 
+WordPress project management / communication plugin designed to communicate project progress and timing.
 
 == Description ==
 
@@ -32,7 +32,13 @@ http://www.projectpanorama.com/support
 5. Embed projects into pages and posts using the embed code [project_status id="<post_id>"] which can be found on the project listing page
 
 
-== Credits ==
+== Screenshots ==
+
+1. Indicate overall project progress and identify key milestones
+2. Provide key project information, link to relevant documents and automatically track elapsed
+3. Get an overview of project progress vs time left before deadline
+4. Embed project lists into your site
+5. Embed projects into your site, mobile friendly
 
 == Changelog ==
 
