@@ -36,8 +36,7 @@ function psp_project_part($atts) {
 
         $output .= '</div>';
 
-        psp_front_styles(1);
-        psp_front_scripts(1);
+		psp_front_assets(1);
 
         return $output;
 
@@ -102,8 +101,7 @@ function psp_single_project($atts) {
 
         $psp_shortcode .= '</div>';
 
-        psp_front_styles(1);
-        psp_front_scripts(1);
+		psp_front_assets(1);
 
         return $psp_shortcode;
 

@@ -44,6 +44,10 @@ http://www.projectpanorama.com/support
 
 == Changelog ==
 
+= 1.2.5.3 = 
+
+* Fixed bug with shortcodes
+
 
 = 1.2.5.2 = 
 
